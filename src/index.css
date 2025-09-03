@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font classes */
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.font-jetbrains {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Apply fonts to body and headings */
+body {
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "sans-serif";
+}
+
+.member-card {
+  font-family: "Inter", sans-serif;
+}
+
+/* Fallback fonts for better loading */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Inter"), local("Inter-Regular");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Poppins"), local("Poppins-Regular");
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Space Grotesk"), local("SpaceGrotesk-Regular");
+}
+
+/* Ensure team section backgrounds remain stable during GSAP animations */
+.bg-stable {
+  transform: none !important;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: auto;
+  isolation: isolate;
+}
+
+/* Prevent GSAP from interfering with background gradients */
+.team-section {
+  transform: none !important;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: auto;
+  isolation: isolate;
+}
+
+/* Ensure pin-wrapper doesn't affect background */
+.pin-wrapper {
+  transform: none !important;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Remove gaps between team sections */
+.team-section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Ensure seamless connection between sections */
+.team-section + .team-section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Teams container - no gaps */
+.teams-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.teams-container > * {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Performance optimizations */
+.member-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.track {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Smooth scroll enhancements for TPX */
+.member-card {
+  transition: transform 0.3s ease-out;
+}
+
+/* Smooth scroll container */
+.smooth-scroll-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Enhanced smooth scrolling for team sections */
+.team-scroll-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+/* Smooth member card animations */
+.member-card {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Prevent glitches during pin transitions */
+section {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth pin transitions */
+.pin-wrapper {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Mobile optimization for member cards */
+@media (max-width: 768px) {
+  .member-card {
+    min-width: 280px !important;
+    width: 280px !important;
+  }
+
+  .track {
+    gap: 1rem !important; /* gap-4 = 16px */
+  }
+
+  /* Ensure last card is fully visible */
+  .track::after {
+    content: "";
+    min-width: 1rem;
+    height: 1px;
+  }
+}
